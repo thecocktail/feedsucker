@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<front-pages-posts>
+  <front-pages-post>
+    <blog-title>Last Blog Title</blog-title>
+    <blog-url>http://example.com/last-blog</blog-url>
+    <post-body>Last post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-05-29T11:50:49+02:00</post-date>
+    <post-title>Last Post Title</post-title>
+    <post-url>http://example.com/last-blog/last-post</post-url>
+  </front-pages-post>
+  <front-pages-post>
+    <blog-title>Almost Last Blog Title</blog-title>
+    <blog-url>http://example.com/almost-last-blog</blog-url>
+    <post-body>Almost Last post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-04-29T11:50:49+02:00</post-date>
+    <post-title>Almost Last Post Title</post-title>
+    <post-url>http://example.com/almost-last-blog/almost-last-post</post-url>
+  </front-pages-post>
+  <front-pages-post>
+    <blog-title>Middle Blog Title</blog-title>
+    <blog-url>http://example.com/middle-blog</blog-url>
+    <post-body>Middle post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-03-29T11:50:49+02:00</post-date>
+    <post-title>Middle Post Title</post-title>
+    <post-url>http://example.com/middle-blog/middle-post</post-url>
+  </front-pages-post>
+  <front-pages-post>
+    <blog-title>Second Blog Title</blog-title>
+    <blog-url>http://example.com/second-blog</blog-url>
+    <post-body>Second post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-02-29T11:50:49+02:00</post-date>
+    <post-title>Second Post Title</post-title>
+    <post-url>http://example.com/last-blog/second-post</post-url>
+  </front-pages-post>
+  <front-pages-post>
+    <blog-title>First Blog Title</blog-title>
+    <blog-url>http://example.com/first-blog</blog-url>
+    <post-body>First post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-01-29T11:50:49+02:00</post-date>
+    <post-title>First Post Title</post-title>
+    <post-url>http://example.com/last-blog/first-post</post-url>
+  </front-pages-post>
+
+</front-pages-posts>
