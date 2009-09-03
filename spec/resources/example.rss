@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Feedsucker Feed</title>
+    <link>http://example.es/feedsucker-feed.rss</link>
+    <item>
+      <title>Latest post title</title>
+      <link>http://example.es/feedsucker-posts/latest-post</link>
+      <description>Latest post description</description>
+      <pubDate>Thu, 03 Sep 2009 19:07:50 +0200</pubDate>
+    </item>
+    <item>
+      <title>Almost latest post title</title>
+      <link>http://example.es/feedsucker-posts/almost-latest-post</link>
+      <description>Almost latest post description</description>
+      <pubDate>Thu, 03 Sep 2009 9:03:51 +0200</pubDate>
+    </item>
+    <item>
+      <title>Middle post title</title>
+      <link>http://example.es/feedsucker-posts/middle-post</link>
+      <description>Middle post description</description>
+      <pubDate>Wed, 02 Sep 2009 19:07:50 +0200</pubDate>
+    </item>
+    <item>
+      <title>Second post title</title>
+      <link>http://example.es/feedsucker-posts/second-post</link>
+      <description>Second post description</description>
+      <pubDate>Tue, 01 Sep 2009 19:03:51 +0200</pubDate>
+    </item>
+    <item>
+      <title>First post title</title>
+      <link>http://example.es/feedsucker-posts/first-post</link>
+      <description>First post description</description>
+      <pubDate>Tue, 01 Sep 2009 9:03:51 +0200</pubDate>
+    </item>
+  </channel>
+</rss>
