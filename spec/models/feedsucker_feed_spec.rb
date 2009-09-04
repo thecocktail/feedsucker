@@ -88,3 +88,12 @@ describe FeedsuckerFeed, ' with an XML feed' do
   it_should_not_destroy_existing_posts_with_an_empty_or_non_standard_feed
 end
 
+describe FeedsuckerFeed, 'suck them all!' do
+  it 'should suck from all the feeds defined' do
+    feed_one, feed_two = mock('feed_one'), mock('feed_two')
+    feed_one.should_receive(:suck!)
+    feed_two.should_receive(:suck!)
+    FeedsuckerFeed.should_receive(:find).with(:all).and_return([feed_one, feed_two])
+    FeedsuckerFeed.suck_all!
+  end
+end

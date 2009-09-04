@@ -28,6 +28,10 @@ class FeedsuckerFeed < ActiveRecord::Base
     end
   end
 
+  def self.suck_all!
+    self.find(:all).each {|feed| feed.suck!}
+  end
+
   private
     def rss_or_atom_feed_items
       FeedTools::Feed.open(self.url).items.inject([]) do |items, item|

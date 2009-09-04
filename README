@@ -1,13 +1,59 @@
 Feedsucker
 ==========
 
-Introduction goes here.
+Rails plugin to load feeds (using FeedTools) or XML resources (using REXML::XPath expressions) into an ActiveRecord model (called FeedsuckerPost).
 
+Feedsucker uses another AR model (called FeedsuckerFeed) to store the settings of the different sources it should suck from.
+
+FeedsuckerPost model currently has the following fields: title, content, date, url, blog_title and blog_url (and the foreign key of the FeedsuckerFeed from which the data was sucked).
+
+FeedsuckerFeed model has the following fields: title, url, number_of_posts, xpath_post_title, xpath_post_content, xpath_post_date, xpath_post_url, xpath_blog_title and xpath_blog_url.
 
 Example
 =======
 
-Example goes here.
+To suck a feed:
+
+    FeedsuckerFeed.find_by_title('Calippo').suck!
+
+To suck them all:
+
+    FeedsuckerFeed.suck_all!
+
+To show sucked items in a view:
+
+    <% FeedsuckerFeed.find_by_title('Calippo').posts.each do |post| %>
+    <h3><%= post.title %></h3>
+    [...]
+    <% end %>
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Dependencies
+============
+
+FeedTools
+
+    gem install feedtools
+
+Installation
+============
+
+With:
+
+    script/plugin install git://github.com/thecocktail/feedsucker.git
+
+Or:
+
+    git submodule add git://github.com/thecocktail/feedsucker.git vendor/plugins/feedsucker
+
+And then:
+
+    script/generate feedsucker
+
+
+Bugs & feedback
+===============
+
+ruby at listas dot the-cocktail dot com
+
+Copyright (c) 2009 The Cocktail Experience S.L., released under the MIT license
