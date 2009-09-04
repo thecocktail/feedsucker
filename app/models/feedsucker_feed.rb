@@ -23,7 +23,7 @@ class FeedsuckerFeed < ActiveRecord::Base
           :title      => item[:post_title],
           :content    => item[:post_content],
           :date       => item[:post_date],
-          :url        => item[:post_link])
+          :url        => item[:post_url])
       end
     end
   end
@@ -47,7 +47,7 @@ class FeedsuckerFeed < ActiveRecord::Base
     def xml_feed_items
       xmldata = Net::HTTP.get_response(URI.parse(self.url)).body
       xmldoc = REXML::Document.new(xmldata)
-      items = REXML::XPath.match(xmldoc, self.xpath_post_url).map {|url| {:post_url => url}}
+      items = REXML::XPath.match(xmldoc, self.xpath_post_url).map {|url| {:post_url => url.to_s}}
       %w{post_title post_content post_date
          blog_title blog_url}.each do |suffix|
         REXML::XPath.match(xmldoc, self.send("xpath_#{suffix}")).each_with_index do |value, index|

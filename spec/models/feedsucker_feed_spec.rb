@@ -12,6 +12,7 @@ module FeedsuckerMacros
         @feed.posts.size.should == 5
         posts = FeedsuckerFeed.find_by_title(@feed.title).posts
         posts.size.should == 5
+        posts.first.url.should == 'http://example.com/last-blog/last-post' 
         posts.first.title.should == 'Last Post Title' 
         posts.last.title.should == 'First Post Title'
       end
