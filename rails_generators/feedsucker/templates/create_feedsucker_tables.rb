@@ -25,6 +25,24 @@ class CreateFeedsuckerTables < ActiveRecord::Migration
 
       t.timestamps
     end
+    # Feedsucker Feeds examples:
+    # ==========================
+    # FeedsuckerFeed.create(
+    #   :title => 'RSS/Atom example',
+    #   :nicetitle => 'atom-example',
+    #   :number_of_posts => 3, # optional (all posts in feed if blank)
+    #   :url => 'http://example.com/posts.atom')
+    # FeedsuckerFeed.create(
+    #   :title => 'XML resource index example',
+    #   :nicetitle => 'xml-example',
+    #   :url => 'http://example.com/temas/arte-y-arquitectura/xml',
+    #   :number_of_posts => 3, # optional (all posts if blank)
+    #   :xpath_post_title => '//post-title/text()',
+    #   :xpath_post_content => '//post-body/text()',
+    #   :xpath_post_date => '//post-date/text()',
+    #   :xpath_post_url => '//post-id/text()',
+    #   :xpath_blog_title => '//blog-title/text()',
+    #   :xpath_blog_url => '//blog-url/text()')
   end
 
   def self.down
