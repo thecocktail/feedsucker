@@ -3,7 +3,7 @@
   <front-pages-post>
     <blog-title>Last Blog Title</blog-title>
     <blog-url>http://example.com/last-blog</blog-url>
-    <post-body>Last post body</post-body>
+    <post-body>Last post body. With an HTML entity, for example &#225;</post-body>
     <post-comments-count type="integer">3</post-comments-count>
     <post-date type="datetime">2009-05-29T11:50:49+02:00</post-date>
     <post-title>Last Post Title</post-title>

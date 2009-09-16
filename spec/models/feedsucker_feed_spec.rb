@@ -44,6 +44,15 @@ module FeedsuckerMacros
         @feed.posts.size.should == 5
       end
     end
+
+    def it_should_not_replace_html_entities
+      it "should not replace HTML entities" do
+        @feed.suck!
+        FakeWeb.register_uri(:get, @feed.url, :body => '<rss></rss>')
+        @feed.suck!
+        @feed.posts.first.content.include?('&#225;').should be_true
+      end
+    end
   end
 end
 
@@ -63,6 +72,7 @@ describe FeedsuckerFeed, ' with a valid RSS feed' do
   it_should_suck_only_the_right_number_of_posts
   it_should_suck_all_the_posts_if_we_ask_more_posts_than_the_feed_has
   it_should_not_destroy_existing_posts_with_an_empty_or_non_standard_feed
+  it_should_not_replace_html_entities
 end
 
 describe FeedsuckerFeed, ' with an XML feed' do
@@ -87,6 +97,7 @@ describe FeedsuckerFeed, ' with an XML feed' do
   it_should_suck_only_the_right_number_of_posts
   it_should_suck_all_the_posts_if_we_ask_more_posts_than_the_feed_has
   it_should_not_destroy_existing_posts_with_an_empty_or_non_standard_feed
+  it_should_not_replace_html_entities
 end
 
 describe FeedsuckerFeed, 'suck them all!' do

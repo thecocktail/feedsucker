@@ -6,7 +6,7 @@
     <item>
       <title>Last Post Title</title>
       <link>http://example.com/last-blog/last-post</link>
-      <description>Last post description</description>
+      <description>Last post description. With an HTML entity, for example &#225;</description>
       <pubDate>Thu, 03 Sep 2009 19:07:50 +0200</pubDate>
     </item>
     <item>

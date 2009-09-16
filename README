@@ -49,13 +49,6 @@ To show sucked items in a view:
     <% end %>
 
 
-Dependencies
-============
-
-FeedTools
-
-    gem install feedtools
-
 Installation
 ============
 
