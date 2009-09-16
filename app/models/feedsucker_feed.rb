@@ -33,17 +33,6 @@ class FeedsuckerFeed < ActiveRecord::Base
   end
 
   private
-    def rss_or_atom_feed_items
-      FeedTools::Feed.open(self.url).items.inject([]) do |items, item|
-        items << {
-          :post_title   => item.title,
-          :post_content => item.content,
-          :post_date    => item.time,
-          :post_url     => item.link
-        }
-      end
-    end
-
     def xml_feed_items
       xmldata = Net::HTTP.get_response(URI.parse(self.url)).body
       xmldoc = REXML::Document.new(xmldata)
@@ -61,6 +50,7 @@ class FeedsuckerFeed < ActiveRecord::Base
     end
 
     def xpath_defaults_for(xmldoc)
+      # TODO: xpaths if xmldoc is an Atom feed
       { :blog_title => '//channel/title/text()',
         :blog_url => '//channel/link/text()',
         :post_title => '//item/title/text()',
