@@ -53,6 +53,38 @@ module FeedsuckerMacros
         @feed.posts.first.content.include?('&#225;').should be_true
       end
     end
+    
+    def it_should_not_repeat_old_post_when_not_delete_preview
+      it "should_not_repeat_old_post_when_not_delete_preview" do
+        @feed.suck!
+        @feed.posts.size.should == 5
+        @feed.update_attribute(:delete_preview, false)
+        @feed.suck!
+        @feed.posts.size.should == 5
+      end
+    end
+    
+    def it_should_add_new_post_when_not_delete_preview
+      it "it_should_add_new_post_when_not_delete_preview" do
+        @feed.suck!
+        @feed.posts.size.should == 5
+        @feed.update_attribute(:delete_preview, false)
+        FakeWeb.register_uri(:get, @feed.url, :body => File.read(RSS_FILE_2_PATH)) 
+        @feed.suck!
+        @feed.posts.size.should == 7
+      end
+    end
+    def it_should_add_new_post_when_not_delete_preview_in_xml
+      it "it_should_add_new_post_when_not_delete_preview_in_xml" do
+        @feed.suck!
+        @feed.posts.size.should == 5
+        @feed.update_attribute(:delete_preview, false)
+        FakeWeb.register_uri(:get, @feed.url, :body => File.read(XML_FILE_2_PATH)) 
+        @feed.suck!
+        @feed.posts.size.should == 6
+      end
+    end
+    
   end
 end
 
@@ -60,7 +92,7 @@ describe FeedsuckerFeed, ' with a valid RSS feed' do
   include FeedsuckerMacros
 
   RSS_FILE_PATH = (File.dirname(__FILE__) + '/../resources/example.rss')
-
+  RSS_FILE_2_PATH = (File.dirname(__FILE__) + '/../resources/example_2.rss')
   before(:each) do
     @feed = FeedsuckerFeed.create(
       :title => 'Feedsucker',
@@ -73,13 +105,15 @@ describe FeedsuckerFeed, ' with a valid RSS feed' do
   it_should_suck_all_the_posts_if_we_ask_more_posts_than_the_feed_has
   it_should_not_destroy_existing_posts_with_an_empty_or_non_standard_feed
   it_should_not_replace_html_entities
+  it_should_not_repeat_old_post_when_not_delete_preview
+  it_should_add_new_post_when_not_delete_preview
 end
 
 describe FeedsuckerFeed, ' with an XML feed' do
   include FeedsuckerMacros
   
   XML_FILE_PATH = (File.dirname(__FILE__) + '/../resources/example.xml')
-
+  XML_FILE_2_PATH = (File.dirname(__FILE__) + '/../resources/example_2.xml')
   before(:each) do
     @feed = FeedsuckerFeed.create(
       :title => 'Feedsucker',
@@ -98,6 +132,8 @@ describe FeedsuckerFeed, ' with an XML feed' do
   it_should_suck_all_the_posts_if_we_ask_more_posts_than_the_feed_has
   it_should_not_destroy_existing_posts_with_an_empty_or_non_standard_feed
   it_should_not_replace_html_entities
+  it_should_not_repeat_old_post_when_not_delete_preview
+  it_should_add_new_post_when_not_delete_preview_in_xml
 end
 
 describe FeedsuckerFeed, 'suck them all!' do

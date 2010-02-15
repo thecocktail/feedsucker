@@ -16,7 +16,8 @@ To create a RSS/Atom feed to suck from:
     FeedsuckerFeed.create(
       :title => 'RSS/Atom example',
       :nicetitle => 'atom-example',
-      :number_of_posts => 3, # optional (all posts in feed if blank)
+      :number_of_posts => 3, # optional (all posts in feed if blank),
+	  :delete_preview => true, # optional: delete all posts from a feed, before it´s sucked (default -> true)
       :url => 'http://example.com/posts.atom')
 
 To create it but sucking from XML resouce index: 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<front-pages-posts>
+  <front-pages-post>
+    <blog-title>Last Blog Title</blog-title>
+    <blog-url>http://example.com/last-blog</blog-url>
+    <post-body>Last post body. With an HTML entity, for example &#225;</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-05-29T11:50:49+02:00</post-date>
+    <post-title>Last Post Title</post-title>
+    <post-url>http://example.com/last-blog/last-post</post-url>
+  </front-pages-post>
+  <front-pages-post>
+    <blog-title>A new post blog</blog-title>
+    <blog-url>http://example.com/almost-last-blog</blog-url>
+    <post-body>Almost Last post body</post-body>
+    <post-comments-count type="integer">3</post-comments-count>
+    <post-date type="datetime">2009-04-29T11:50:49+02:00</post-date>
+    <post-title>Almost Last Post Title</post-title>
+    <post-url>http://example.com/almost-last-blog/a-new-blog-post</post-url>
+  </front-pages-post>
+
+</front-pages-posts>

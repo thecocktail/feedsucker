@@ -5,6 +5,7 @@ class CreateFeedsuckerTables < ActiveRecord::Migration
       t.string :nicetitle
       t.string :url
       t.integer :number_of_posts
+      t.boolean :delete_preview
       t.string :xpath_blog_title
       t.string :xpath_blog_url
       t.string :xpath_post_title

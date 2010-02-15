@@ -7,6 +7,7 @@ class FeedsuckerFeed < ActiveRecord::Base
 
   def before_create
     self.number_of_posts ||= 0 # Load all entries/posts by default
+    self.delete_preview ||= true # delete all old posts by default
   end
 
   def suck!
@@ -14,9 +15,10 @@ class FeedsuckerFeed < ActiveRecord::Base
     items = xml_feed_items
     if items.any?
       last_item = self.number_of_posts > 0 ? self.number_of_posts : items.size
-      self.posts.destroy_all
+      self.posts.destroy_all if self.delete_preview
       items[0..last_item-1].each do |item|
-        self.posts << FeedsuckerPost.create(
+        unless FeedsuckerPost.find_by_url(item[:post_url])
+          self.posts << FeedsuckerPost.create(
           :feedsucker_feed_id => self.id,
           :blog_title => item[:blog_title],
           :blog_url   => item[:blog_url],
@@ -24,6 +26,7 @@ class FeedsuckerFeed < ActiveRecord::Base
           :content    => item[:post_content],
           :date       => item[:post_date],
           :url        => item[:post_url])
+        end
       end
     end
   end
