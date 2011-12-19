@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 module FeedsuckerPostMacros
-  def self.included(receiver)  
-    receiver.extend         ExampleGroupMethods  
+  def self.included(receiver)
+    receiver.extend         ExampleGroupMethods
   end
 
   module ExampleGroupMethods
@@ -11,7 +11,7 @@ module FeedsuckerPostMacros
        @feed_post = FeedsuckerPost.new
       end
     end
-  
+
     def it_should_strip_standard_tags(field)
       it 'should strip "standard" tags' do
         @feed_post.send "#{field}=", "<p>Tengo el coraz&#243;n contento, lleno de alegr&#237;a.</p>"

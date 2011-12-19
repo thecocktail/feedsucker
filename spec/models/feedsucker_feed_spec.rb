@@ -1,10 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 module FeedsuckerMacros
-  def self.included(receiver)  
-    receiver.extend         ExampleGroupMethods  
+  def self.included(receiver)
+    receiver.extend         ExampleGroupMethods
   end
-  
+
   module ExampleGroupMethods
     def it_should_suck_all_posts_if_no_number_is_given
       it "should suck all the posts if no number is given" do
@@ -12,8 +12,8 @@ module FeedsuckerMacros
         @feed.posts.size.should == 5
         posts = FeedsuckerFeed.find_by_title(@feed.title).posts
         posts.size.should == 5
-        posts.first.url.should == 'http://example.com/last-blog/last-post' 
-        posts.first.title.should == 'Last Post Title' 
+        posts.first.url.should == 'http://example.com/last-blog/last-post'
+        posts.first.title.should == 'Last Post Title'
         posts.last.title.should == 'First Post Title'
       end
     end
@@ -24,10 +24,10 @@ module FeedsuckerMacros
         @feed.suck!
         FeedsuckerFeed.find_by_title(@feed.title).posts.size.should == 2
         @feed.posts.size.should == @feed.number_of_posts
-        @feed.posts.first.title.should == 'Last Post Title' 
+        @feed.posts.first.title.should == 'Last Post Title'
       end
     end
-    
+
     def it_should_suck_all_the_posts_if_we_ask_more_posts_than_the_feed_has
       it "should suck all the posts if we ask more posts than the feed has" do
         @feed.update_attribute(:number_of_posts, 12)
@@ -53,7 +53,7 @@ module FeedsuckerMacros
         @feed.posts.first.content.include?('&#225;').should be_true
       end
     end
-    
+
     def it_should_not_repeat_old_post_when_not_delete_preview
       it "should_not_repeat_old_post_when_not_delete_preview" do
         @feed.suck!
@@ -63,13 +63,13 @@ module FeedsuckerMacros
         @feed.posts.size.should == 5
       end
     end
-    
+
     def it_should_add_new_post_when_not_delete_preview
       it "it_should_add_new_post_when_not_delete_preview" do
         @feed.suck!
         @feed.posts.size.should == 5
         @feed.update_attribute(:delete_preview, false)
-        FakeWeb.register_uri(:get, @feed.url, :body => File.read(RSS_FILE_2_PATH)) 
+        FakeWeb.register_uri(:get, @feed.url, :body => File.read(RSS_FILE_2_PATH))
         @feed.suck!
         @feed.posts.size.should == 7
       end
@@ -79,12 +79,12 @@ module FeedsuckerMacros
         @feed.suck!
         @feed.posts.size.should == 5
         @feed.update_attribute(:delete_preview, false)
-        FakeWeb.register_uri(:get, @feed.url, :body => File.read(XML_FILE_2_PATH)) 
+        FakeWeb.register_uri(:get, @feed.url, :body => File.read(XML_FILE_2_PATH))
         @feed.suck!
         @feed.posts.size.should == 6
       end
     end
-    
+
   end
 end
 
@@ -111,7 +111,7 @@ end
 
 describe FeedsuckerFeed, ' with an XML feed' do
   include FeedsuckerMacros
-  
+
   XML_FILE_PATH = (File.dirname(__FILE__) + '/../resources/example.xml')
   XML_FILE_2_PATH = (File.dirname(__FILE__) + '/../resources/example_2.xml')
   before(:each) do
