@@ -11,7 +11,7 @@ class FeedsuckerGenerator < Rails::Generator::Base
   def file_name
     'create_feedsucker_tables'
   end
-  
+
   protected
     # Override with your own usage banner.
     def banner
